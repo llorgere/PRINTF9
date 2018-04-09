@@ -6,15 +6,206 @@
 /*   By: llorgere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 02:28:07 by llorgere          #+#    #+#             */
-/*   Updated: 2018/04/09 21:06:30 by llorgere         ###   ########.fr       */
+/*   Updated: 2017/12/20 02:38:43 by llorgere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
+#include <stdlib.h>
+/*
+//char		*ft_strndup(const char *s, size_t n);
+int			ft_two_l_conv(char *str)
+{
+	if (str[0] == 'd' || str[0] == 'i')
+		return (9);
+	else if (str[0] == 'u')
+		return (10);
+	else if (str[0] == 'o')
+		return (11);
+	else if (str[0] == 'x')
+		return (12);
+	else if (str[0] == 'X')
+		return (13);
+	else if (str[0] == 'c')
+		return (14);
+	else if (str[0] == 's')
+		return (15);
+	//cette partie pas sur du tout
+	else if (str[0] == 'D')
+		return (16);
+	else if (str[0] == 'U')
+		return (17);
+	else if (str[0] == 'O')
+		return (18);
+	else 
+		return (ft_one_conv(str));
+}
 
+int			ft_three_h_conv(char *str)
+{
+	if (str[0] == 'd' || str[0] == 'i')
+		return (26);
+	else if (str[0] == 'u')
+		return (27);
+	else if (str[0] == 'o')
+		return (28);
+	else if (str[0] == 'x')
+		return (29);
+	else if (str[0] == 'X')
+		return (30);
+	else 
+		return (ft_one_conv(str));
+}
+
+int			ft_three_l_conv(char *str)
+{
+	if (str[0] == 'd' || str[0] == 'i')
+		return (16);
+	else if (str[0] == 'u')
+		return (17);
+	else if (str[0] == 'o')
+		return (18);
+	else if (str[0] == 'x')
+		return (19);
+	else if (str[0] == 'X')
+		return (20);
+	else 
+		return (ft_one_conv(str));
+}
+
+int			ft_two_h_conv(char *str)
+{
+	if (str[0] == 'd' || str[0] == 'i')
+		return (21);
+	else if (str[0] == 'u')
+		return (22);
+	else if (str[0] == 'o')
+		return (23);
+	else if (str[0] == 'x')
+		return (24);
+	else if (str[0] == 'X')
+		return (25);
+	else if (str[0] == 'D')
+		return (9);
+	else if (str[0] == 'U')
+		return (10);
+	else if (str[0] == 'O')
+		return (11);
+	else 
+		return (ft_one_conv(str));
+}
+
+int			ft_two_z_conv(char *str)
+{
+	if (str[0] == 'd' || str[0] == 'i')
+		return (31);
+	else if (str[0] == 'u')
+		return (32);
+	else if (str[0] == 'o')
+		return (33);
+	else if (str[0] == 'x')
+		return (34);
+	else if (str[0] == 'X')
+		return (35);
+	else 
+		return (ft_one_conv(str));
+}
+
+int			ft_two_j_conv(char *str)
+{
+	if (str[0] == 'd' || str[0] == 'i')
+		return (36);
+	else if (str[0] == 'u')
+		return (37);
+	else if (str[0] == 'o')
+		return (38);
+	else if (str[0] == 'x')
+		return (39);
+	else if (str[0] == 'X')
+		return (40);
+	else 
+		return (ft_one_conv(str));
+}
+
+int			ft_one_conv(char *str)
+{	
+	if (str[0] == 'd' || str[0] == 'i')
+		return (1);
+	else if (str[0] == 'u')
+		return (2);
+	else if (str[0] == 'o')
+		return (3);
+	else if (str[0] == 'x')
+		return (4);
+	else if (str[0] == 'X')
+		return (5);
+	else if (str[0] == 'c')
+		return (6);
+	else if (str[0] == 's')
+		return (7);
+	else if (str[0] == 'p')
+		return (8);
+	else if (str[0] == 'D')
+		return (9);
+	else if (str[0] == 'U')
+		return (10);
+	else if (str[0] == 'O')
+		return (11);
+	else if (str[0] == 'C')
+		return (14);
+	else if (str[0] == 'S')
+		return (15);
+	else if (str[0] == '%')
+		return (41);
+	else
+		return (0);
+}
+
+int		ft_two_conv(char *str)
+{
+	if (str[0] == 'l')
+		return (ft_two_l_conv(str));
+	else if (str[0] == 'h')
+		return (ft_two_h_conv(str));
+	else if (str[0] == 'z')
+		return (ft_two_z_conv(str));
+	else if (str[0] == 'j')
+		return (ft_two_j_conv(str));
+	else 
+		return (0);
+}
+
+int		ft_three_conv(char *str)
+{
+	if (str[0] == 'l' && str[1] == 'l')
+		return (ft_three_l_conv(str));
+	else if (str[0] == 'h' && str[1] == 'h')
+		return (ft_three_h_conv(str));
+	else 
+		return (0);
+}
+
+int			ft_what_conv(char *str)
+{
+	int		len;
+
+	len = ft_strlen(str);
+	if (len == 1)
+		return (ft_one_conv(str));
+	else if (len == 2)
+		return (ft_two_conv(str));
+	else if (len == 3)
+		return (ft_three_conv(str));
+	else
+		return (0);
+}
+*/
 static	flag_type	ft_conv_adjust(flag_type flag)
 {
-	if (flag.j == 1)
+/*	if(flag.h > 0 && (flag.z == 1 || flag.j == 1 || flag.l > 0))
+		flag.h = 0;
+*/	if (flag.j == 1)
 	{
 		flag.h = 0;
 		flag.l = 0;
@@ -39,6 +230,7 @@ static	flag_type	ft_conv_adjust(flag_type flag)
 
 static	int			ft_what_convn(flag_type flag, char *str)
 {
+//	printf("test de what_conv | str est [%s]\nles flags sont l : %d | h : %d | j : %d | z : %d |\n", str, flag.l, flag.h, flag.j, flag.z);
 	flag = ft_conv_adjust(flag);
 	if (flag.j == 1)
 		return (ft_two_j_conv(str));
@@ -56,10 +248,27 @@ static	int			ft_what_convn(flag_type flag, char *str)
 		return (ft_one_conv(str));
 }
 
-static	flag_type	ft_flag_init(void)
+flag_type		ft_arg_conv(char *tab)
 {
+	int			i;
+	int			tmp;
 	flag_type	flag;
+	int			count;
+	/*	int		conv_num;
+		int		width;
+		int		preci;
+		int		flag_minus;
+		int		flag_plus;
+		int		flag_dies;
+		int		flag_zero;
+		int		flag_space;
+		int		flag_point;
+		*/	
+	char 	*tabpw;
 
+	i = 1;
+	tmp = 0;
+	count = 0;
 	flag.conv_num = 0;
 	flag.width = -1;
 	flag.preci = -1;
@@ -75,236 +284,121 @@ static	flag_type	ft_flag_init(void)
 	flag.z = 0;
 	flag.tab = NULL;
 	flag.W = -1;
-	return (flag);
-}
 
-int		ft_flagfirst(flag_type *flag, int i, char *tab, int *tmp2)
-{
-	if (i == *tmp2 && tab[i] == '-' && flag->minus == 0 && flag->width < 0 && flag->preci < 0)
-	{
-		flag->minus++;
-		return(i++);
-	}
-	else if (i == *tmp2 && tab[i] == '+' && flag->plus == 0)
-	{
-		flag->plus++;
-		return(i++);
-	}
-	else if (i == *tmp2 && tab[i] == 'l' && flag->l < 2)
-	{
-		flag->l++;
-		return(i++);
-	}
-	else if (i == *tmp2 && tab[i] == 'h' && flag->h < 2)
-	{
-		flag->h++;
-		return(i++);
-	}
-	else if (i == *tmp2 && tab[i] == 'j' && flag->j == 0)
-	{
-		flag->j++;
-		return(i++);
-	}
-	else
-		return(i);
-}
-
-int		ft_flagsecond(flag_type *flag, int i, char *tab, int *tmp2)
-{
-	if ((i == *tmp2) && tab[i] == 'z' && flag->z == 0)
-	{
-		flag->z++;
-		return(i++);
-		i++;
-	}
-	if (i == *tmp2 && tab[i] == ' ' && flag->space == 0 && flag->width < 0 && flag->preci < 0)
-	{
-		flag->space++;
-		return(i++);
-		i++;
-	}
-	if (i == *tmp2 && tab[i] == '0' && flag->zero == 0 && flag->width < 0 && flag->preci < 0)
-	{
-		flag->zero++;
-		return(i++);
-		i++;
-	}
-	if (i == *tmp2 && tab[i] == '#' && flag->dies == 0)
-	{
-		flag->dies++;
-		return(i++);
-	}
-	else
-		return(i);
-}
-
-int		ft_flagthird(flag_type *flag, int i, char *tab, int *tmp2)
-{
-	int		tmp;
-	char	*tabpw;
-
-	tmp = 0;
-	tabpw = NULL;
-	if (i == *tmp2 && tab[i] > '0' && tab[i] <= '9' && flag->width < 0 && flag->preci < 0)
-	{
-		tmp = i;
-		while (tab[i] >= '0' && tab[i] <= '9')
-			i++;
-		tabpw = ft_strndup(tab + tmp, i - tmp + 1);
-		flag->width = ft_atoi(tabpw);
-		free(tabpw);
-		return (i);
-	}
-	/*
-	if (i == *tmp2 && tab[i] == '.' && flag->preci < 0)
-	{
-		if (tab[i + 1] < '0' || tab[i + 1] > '9')
-		{
-			flag->preci = 0;
-			return(i++);
-		}
-		else
-		{
-			i++;
-			tmp = i;
-			while (tab[i] >= '0' && tab[i] <= '9')
-				i++;
-			tabpw = ft_strndup(tab + tmp, i - tmp + 1);
-			flag->preci = ft_atoi(tabpw);
-			free(tabpw);
-			return (i);
-		}
-	}
-	if ((i == *tmp2) && (tab[i] == '+' || tab[i] == ' ' || tab[i] == '#' ||
-		tab[i] == '-' || tab[i] == '0' || tab[i] == '.' || (tab[i] >= '0' &&
-		tab[i] <= '9') || tab[i] == 'j' || tab[i] == 'h' || tab[i] == 'l' ||
-		tab[i] == 'z'))
-			return(i++);
-	*/
-	else
-		return(i);
-}
-
-flag_type			ft_arg_conv(char *tab)
-{
-	int			i;
-	int			tmp;
-	int			tmp2;
-//	int			count;
-	flag_type	flag;
-	char 	*tabpw;
-
-	i = 1;
-	tmp = 0;
-	//count = 0;
-	flag = ft_flag_init();
 	while (tab[i] != 'd' && tab[i] != 'i' && tab[i] != 's' &&
 			tab[i] != 'p' && tab[i] != 'S' && tab[i] !='D' &&
 			tab[i] != 'U' && tab[i] !='O' && tab[i] != 'o' &&
 			tab[i] != 'u' && tab[i] !='x' && tab[i] !='X' &&
-			tab[i] != 'c' && tab[i] !='C'  && tab[i] !='\0'
-			&& tab[i] != '%')
+			tab[i] != 'c' && tab[i] !='C'  && tab[i] !='\0'/* &&
+			tab[i] != 'l' && tab[i] != 'j' && tab[i] != 'h' && tab[i] != 'z'*/ && tab[i] != '%')
 	{
-//		tmp2 = count;
-		i = ft_flagfirst(&flag, i, tab, &tmp2);
-		/*
-		   if (tab[i] == '-' && flag.minus == 0 && flag.width < 0 && flag.preci < 0)
-		   {
-		   flag.minus++;
-		   i++;
-		   }
-		   else if (tab[i] == '+' && flag.plus == 0)
-		   {
-		   flag.plus++;
-		   i++;
-		   }
-		   else if (tab[i] == 'l' && flag.l < 2)
-		   {
-		   flag.l++;
-		   i++;
-		   }
-		   else if (tab[i] == 'h' && flag.h < 2)
-		   {
-		   flag.h++;
-		   i++;
-		   }
-		   else if (tab[i] == 'j' && flag.j == 0)
-		   {
-		   flag.j++;
-		   i++;
-		   }
-		   */
-		//else if (tab[i] == 'z' && flag.z == 0)
-		/*
-		   if (tab[i] == 'z' && flag.z == 0)
-		   {
-		   flag.z++;
-		   i++;
-		   }
-		   else if (tab[i] == ' ' && flag.space == 0 && flag.width < 0 && flag.preci < 0)
-		   {
-		   flag.space++;
-		   i++;
-		   }
-		   else if (tab[i] == '0' && flag.zero == 0 && flag.width < 0 && flag.preci < 0)
-		   {
-		   flag.zero++;
-		   i++;
-		   }
-		   else if (tab[i] == '#' && flag.dies == 0)
-		   {
-		   flag.dies++;
-		   i++;
-		   }
-		   */
-		i = ft_flagsecond(&flag, i, tab, &tmp2);
-		
-		if (tab[i] > '0' && tab[i] <= '9' && flag.width < 0 && flag.preci < 0)
+		tmp = count;
+		if ((count == tmp) && tab[i] == '-' && flag.minus == 0 && flag.width < 0 && flag.preci < 0)
 		{
+			flag.minus++;
+			i++;
+			count++;
+		}
+		if ((count == tmp) && tab[i] == '+' && flag.plus == 0/* && flag.width < 0 && flag.preci < 0*/)
+		{
+			flag.plus++;
+			i++;
+			count++;
+		}
+		if ((count == tmp) && tab[i] == 'l' && flag.l < 2/* && flag.width < 0 && flag.preci < 0*/)
+		{
+			flag.l++;
+			i++;
+			count++;
+		}
+		if ((count == tmp) && tab[i] == 'h' && flag.h < 2/* && flag.width < 0 && flag.preci < 0*/)
+		{
+			flag.h++;
+			i++;
+			count++;
+		}
+		if ((count == tmp) && tab[i] == 'j' && flag.j == 0/* && flag.width < 0 && flag.preci < 0*/)
+		{
+			flag.j++;
+			i++;
+			count++;
+		}
+		if ((count == tmp) && tab[i] == 'z' && flag.z == 0/* && flag.width < 0 && flag.preci < 0*/)
+		{
+			flag.z++;
+			i++;
+			count++;
+		}
+		if ((count == tmp) && tab[i] == ' ' && flag.space == 0 && flag.width < 0 && flag.preci < 0)
+		{
+			flag.space++;
+			i++;
+			count++;
+		}
+		if ((count == tmp) && tab[i] == '0' && flag.zero == 0 && flag.width < 0 && flag.preci < 0)
+		{
+			flag.zero++;
+			i++;
+			count++;
+		}
+		if ((count == tmp) && tab[i] == '#' && flag.dies == 0 /*&& flag.width < 0 && flag.preci < 0*/)
+		{
+			flag.dies++;
+			i++;
+			count++;
+		}
+		if ((count == tmp) && tab[i] > '0' && tab[i] <= '9' && flag.width < 0 && flag.preci < 0)
+		{
+			count++;
 			tmp = i;
 			while (tab[i] >= '0' && tab[i] <= '9')
 				i++;
 			tabpw = ft_strndup(tab + tmp, i - tmp + 1);
 			flag.width = ft_atoi(tabpw);
 			free(tabpw);
+			tmp = count--;
 		}
-		
-		//i = ft_flagthird(&flag, i, tab, &tmp2);
-		else if (tab[i] == '.' && flag.preci < 0)
+		if ((count == tmp) && tab[i] == '.' && flag.preci < 0)
 		{
+			count++;
 			if (tab[i + 1] < '0' || tab[i + 1] > '9')
 			{
+//				printf("test de la boucle 1\n");
 				flag.preci = 0;
 				i++;
 			}
 			else
 			{
+//				printf("test de la boucle 2\n");
 				i++;
 				tmp = i;
 				while (tab[i] >= '0' && tab[i] <= '9')
 					i++;
 				tabpw = ft_strndup(tab + tmp, i - tmp + 1);
 				flag.preci = ft_atoi(tabpw);
+				tmp = count--;
 				free(tabpw);
 			}
 		}
-		
-		else if ((tab[i] == '+' || tab[i] == ' ' || tab[i] == '#' || tab[i] == '-' || tab[i] == '0' || tab[i] == '.' || (tab[i] >= '0' && tab[i] <= '9') || tab[i] == 'j' || tab[i] == 'h' || tab[i] == 'l' || tab[i] == 'z'))
-			i++;
-		
-		//else
-		//if(i == tmp2)
-		else
+		if ((count == tmp) && (tab[i] == '+' || tab[i] == ' ' || tab[i] == '#' || tab[i] == '-' || tab[i] == '0' || tab[i] == '.' || (tab[i] >= '0' && tab[i] <= '9') || tab[i] == 'j' || tab[i] == 'h' || tab[i] == 'l' || tab[i] == 'z'))
 		{
+//			printf("test de la boucle 3\n");
+			count++;
+			i++;
+		}
+		if(count == tmp)
+		{
+			count++;
 			tmp = i;
 			while (tab[i] != '\0')
 				i++;
 			if (tmp != i)
 				flag.tab = ft_strndup(tab + tmp, i - tmp + 1);
 			flag.conv_num = -1;
+			tmp = count--;
 			return (flag);
 		}
 	}
-	flag.conv_num = ft_what_convn(flag, tab + i);
-	return (flag);
+		flag.conv_num = ft_what_convn(flag, tab + i);
+		return (flag);
 }
